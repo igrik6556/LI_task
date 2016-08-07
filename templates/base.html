@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles i18n %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Igor Pivovarov" />
+    <meta name="google-site-verification" content="95M7d2mcmEvPoTgeFZtHFEYpaw-yAlAyF71dakdnJ08" />
+        
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/mdb.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/fonts.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery-2.2.3.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/mdb.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/tether.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+{% endblock styles %}
+  </head>
+    
+  <body>
+{% block header %}
+  <div class="container-fluid header">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-2"><img id="logo" src="{% static "img/logo.png" %}" weight="80px" height="80px" alt="{% trans "Logo" %}"></div>
+      {% if user and not user.is_anonymous %}
+      <div class="col-sm-3 btn-login welc-text">{% trans 'Welcome' %}, {{ user.username }}</div>
+      <div class="col-sm-1 btn-login"><a id="logout" href="{% url 'comments:logout' %}">{% trans 'Logout' %}</a></div>
+      {% else %}
+      <div class="col-sm-2  col-sm-offset-2 btn-login"><a id="login" href="{% url "comments:login" %}">{% trans "Login" %}</a></div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock header %}
+
+{% block content %}
+{% endblock content %}
+  </body>
+</html>

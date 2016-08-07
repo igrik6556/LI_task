@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% trans 'Comments board' %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div> 
+<span class="title">{% trans "Comments" %} ({{ num_comments }})</span>
+{% if num_comments > 0 %}
+{% include "comments/comment_template.html" %}
+{% else %}
+    <div class="alert alert-success">{% trans "No comments yet. You can leave first :)" %}</div>
+{% endif %}
+{% if user.is_authenticated %}
+  {% include "comments/comment_form.html" %}
+{% else %}
+  <div class="alert alert-success">
+    <div class="center">{% trans "Only registered users can add comments" %}.
+    <a href="{% url "comments:login" %}">{% trans "Log in" %}</a> {% trans "please" %}.</div>
+  </div>
+{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+                        
+
+{% endblock content %}

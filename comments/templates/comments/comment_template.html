@@ -1,0 +1,20 @@
+{% load i18n %}
+     
+{% for c in comments %}
+  <div class="comment-wrapper">
+      <div class="head-message">
+        <span class="user">{{ c.user }}</span> <i class="date">{{ c.date }}</i>
+      </div>
+      <div class="message">{{ c.text }}</div>
+      {% if user.is_authenticated %}
+        <a href="{{ c.get_reply_link }}" class="comment-reply-link" data-id="{{ c.id }}">{% trans 'Reply' %}</a>
+        <a href="#" class="comment-reply-cancel-link">{% trans 'Cancel reply' %}</a>
+      {% endif %}
+  </div>
+      {% if c.children %}
+        <div class="children">
+          {% include 'comments/comment_template.html' with comments=c.children %}
+        </div>
+      {% endif %}
+  
+{% endfor %}

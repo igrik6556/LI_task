@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<div class="comment-form-container form-group">
+ <form class="comment-form" action="{% url 'comments:comment_add' %}" method="post">
+  {% csrf_token %}
+  {% for field in form.hidden_fields %}
+    {{ field }}
+  {% endfor %}
+    
+  {% for field in form.visible_fields %}
+    {% if field.errors|length > 0 %}
+      {% for error in field.errors %}
+        <strong>{{ error }}</strong>
+      {% endfor %}
+    {% endif %}
+    {% if field.help_text %}
+      {{ field.help_text }}
+    {% endif %}
+    {{ field }}
+  {% endfor %}
+  <input class="btn btn-primary btn-sm" type="submit" value={% trans "Send" %} name="comment_btn" >
+</form>
+</div>

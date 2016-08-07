@@ -1,0 +1,20 @@
+@font-face {
+    font-family: SansLight;
+    src: url(../font/OpenSansLight.ttf);
+}
+
+@font-face {
+    font-family: SansReg;
+    src: url(../font/SansRegular.ttf);
+}
+
+@font-face {
+    font-family: LightItal;
+    src: url(../font/LightItalic.otf);
+}
+
+@font-face {
+    font-family: Arial;
+    src: url(../font/Arial.ttf);
+}
+

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% trans "Authorization" %}{% endblock %}
+
+{% block header %} {% endblock header %}
+
+{% block content %}
+<div class="login-wrapper">
+<div class="total-center">
+   {% if user.is_authenticated %}
+    <span class="logpage-title" >{% trans "Sorry, but you are already logged in" %}</span><br>
+    <a href="{% url 'comments:main' %}"><img src="{% static "img/logo.png" %}" alt="{% trans "Login with Facebook" %}" height="50px" width="60px"></a>
+   {% else %}
+    <span class="logpage-title" >{% trans "Authorization" %}</span><br>
+    <a href="{% url 'social:begin' 'facebook' %}"><img src="{% static "img/fb.jpg" %}" alt="{% trans "Login with Facebook" %}" height="50px" width="50px" style="margin-right: 30px"></a>
+    <a href="{% url 'social:begin' "google-oauth2" %}"><img src="{% static "img/google.jpg" %}" alt="{% trans "Login with Google+" %}" height="50px" width="50px"></a>
+   {% endif %}
+</div>
+</div>
+{% endblock content %}
