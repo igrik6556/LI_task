@@ -14,18 +14,14 @@
 5. pip3 install -r requirements.txt
 6. python3 manage.py runserver
 7. открыть в браузере http://localhost:8000/
-
    Заметки: проект django идет со сформированной базой данных.
    Если вы хотите очистить базу данных. необходимо выполнить следующие шаги:
-
    	1. rm database.sqlite3
    	2. python3 manage.py migrate
    	Создастся новая база данных.
 
 Есть созданный суперпользователь:
-
 login = admin
-
 pass  = 123
 
 Чтобы запустить тесты, необходимо выполнить команду:
@@ -49,18 +45,14 @@ To launch the django app, you need:
 5. pip3 install -r requirements.txt
 6. python3 manage.py runserver
 7. open http://localhost:8000/ in your browser
-
    Notes: Django app comes with a preinstalled database.
    If you want clear the database, follow these steps:
-
    	1. rm database.sqlite3
    	2. python3 manage.py migrate
    	A new database will be created then.
 
 There is created superuser:
-
 login = admin
-
 pass  = 123
 
 To launch tests, please follow these instructions:
